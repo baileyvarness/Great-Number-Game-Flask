@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Great Number Game</title>
+</head>
+<body>
+    <h1 style="text-align:center;">Welcome to the Great Number Game!</h1>
+    <p style="text-align:center;">I am thinking of a number between 1 and 100</p>
+    <p style="text-align:center;">Take a guess!</p>
+    <form action="/guess" method="POST">
+        <input type="number" name="number_guess" min = "1" max="100">
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if session['is_too_low'] == True %}
+    <div style="margin:auto; border: solid 3px black; background-color:red; color:white; width:200px; height:200px">
+        <h2>Too low!</h2>
+    </div>
+    {% endif %}
+
+    {% if session['is_too_high'] == True %}
+    <div style="margin:auto; border: solid 3px black; background-color:red; color:white; width:200px; height:200px">
+        <h2>Too high!</h2>
+    </div>
+    {% endif %}
+    
+    {% if session['is_equal'] == True %}
+    <div style="margin:auto; border: solid 3px black; background-color:green; color:white; width:200px; height:200px">
+        <h2>{{ session['random']}} was the number!</h2>
+    </div>
+    {% endif %}
+</body>
+</html>
+
